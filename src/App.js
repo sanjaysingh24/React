@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import Login from './component/Login';
+import Registration from './component/Registration';
 import './App.css';
 
 function App() {
+  const[isLogin,setLogin] = useState(true);
+
+const toggleform =()=>{
+  setLogin(!isLogin);
+}
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+  <div>{isLogin ? <Login></Login> : <Registration></Registration>}</div>
+<p className='Pointer' onClick={toggleform}>
+{isLogin ? 'New user? Register here.' : 'Already have an account? Login here.'}
+</p>
+
+    </>
   );
 }
 
